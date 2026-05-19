@@ -250,6 +250,20 @@ body {
 
 .cart-total { font-size: 1.3rem; font-weight: 700; color: #111; }
 
+.cart-actions { display: flex; gap: 1rem; align-items: center; }
+
+.cart-clear {
+  padding: 0.6rem 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.cart-clear:hover { border-color: #e63946; color: #e63946; }
+
 .cart-back {
   padding: 0.6rem 1.2rem;
   background: #111;

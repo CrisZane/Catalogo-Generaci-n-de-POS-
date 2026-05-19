@@ -5,7 +5,8 @@ import Image from "next/image"
 import { useCart } from "../context/CartContext"
 
 export default function CartPage() {
-const { items, removeFromCart, totalPrice } = useCart()
+  const { items, removeFromCart, clearCart, totalPrice } = useCart()
+
   if (items.length === 0) {
     return (
       <main className="cart-container">
@@ -57,14 +58,14 @@ const { items, removeFromCart, totalPrice } = useCart()
         <p className="cart-total">
           Total: ${totalPrice.toLocaleString("es-MX")} MXN
         </p>
-      <div className="cart-actions">
-  <button onClick={clearCart} className="cart-clear">
-    Vaciar carrito
-  </button>
-  <Link href="/" className="cart-back">
-    Regresar al catalogo
-  </Link>
-</div>
+        <div className="cart-actions">
+          <button onClick={clearCart} className="cart-clear">
+            Vaciar carrito
+          </button>
+          <Link href="/" className="cart-back">
+            Regresar al catalogo
+          </Link>
+        </div>
       </div>
 
     </main>

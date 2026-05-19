@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useState, useEffect } from "react"
 import { Product, CartItem } from "../types/index"
 
 interface CartContextType {
@@ -17,6 +17,15 @@ const CartContext = createContext<CartContextType | null>(null)
 export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const [items, setItems] = useState<CartItem[]>([])
+
+  useEffect(() => {
+    const saved = localStorage.getItem("cart")
+    if (saved) setItems(JSON.parse(saved))
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(items))
+  }, [items])
 
   const addToCart = (product: Product) => {
     setItems((prev) => {
@@ -39,7 +48,6 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const clearCart = () => setItems([])
 
   const totalItems = items.reduce((sum, i) => sum + i.quantity, 0)
-
   const totalPrice = items.reduce((sum, i) => sum + i.product.price * i.quantity, 0)
 
   return (
