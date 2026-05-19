@@ -57,9 +57,14 @@ const { items, removeFromCart, totalPrice } = useCart()
         <p className="cart-total">
           Total: ${totalPrice.toLocaleString("es-MX")} MXN
         </p>
-        <Link href="/" className="cart-back">
-  Regresar al catalogo
-</Link>
+      <div className="cart-actions">
+  <button onClick={clearCart} className="cart-clear">
+    Vaciar carrito
+  </button>
+  <Link href="/" className="cart-back">
+    Regresar al catalogo
+  </Link>
+</div>
       </div>
 
     </main>
